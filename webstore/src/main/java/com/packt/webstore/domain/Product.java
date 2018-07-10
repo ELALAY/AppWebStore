@@ -102,7 +102,7 @@ public class Product {
 		return this.condition;
 	}
 
-	public void setCondition(String condition) {
+	public void setConditionx(String condition) {
 		this.condition = condition;
 	}
 
