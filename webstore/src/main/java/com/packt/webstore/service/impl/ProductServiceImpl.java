@@ -4,9 +4,7 @@ import java.util.List;
 import com.packt.webstore.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
-import com.packt.webstore.service.OrderService;
 import com.packt.webstore.service.ProductService;
 
 @Service
@@ -15,7 +13,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Product> allProducts = productRepository.getAllProducts();
+		return allProducts;
 	}
+
 }
