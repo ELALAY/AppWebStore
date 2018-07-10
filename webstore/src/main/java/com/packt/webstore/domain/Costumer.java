@@ -1,11 +1,13 @@
-
 package com.packt.webstore.domain;
+
+import java.math.BigDecimal;
 
 public class Costumer{
 
 	private String CostumerId;
+	private String FullName;
 	private String Address;
-	private BidDecimal NoOfOrdersMade;
+	private BigDecimal NoOfOrdersMade;
 
 	String getCostumerId() {
 		return this.CostumerId;
@@ -13,6 +15,14 @@ public class Costumer{
 
 	void setCostumerId(String CostumerId) {
 		this.CostumerId = CostumerId;
+	}
+	
+	String getFullName() {
+		return this.FullName;
+	}
+
+	void setFullName(String FullName) {
+		this.FullName = FullName;
 	}
 
 	void setAddress(String Address) {
@@ -23,13 +33,37 @@ public class Costumer{
 		return this.Address;
 	}
 
-
-	String getNoOfOrdersMade() {
+	BigDecimal getNoOfOrdersMade() {
 		return this.NoOfOrdersMade;
 	}
 
-	void setNoOfOrdersMade(String NoOfOrdersMade) {
+	void setNoOfOrdersMade(BigDecimal NoOfOrdersMade) {
 		this.NoOfOrdersMade = NoOfOrdersMade;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Costumer other = (Costumer) obj;
+		if (CostumerId == null)
+			if (other.CostumerId != null) return false;
+		else if (!CostumerId.equals(other.CostumerId)) return false;
+		return true; 
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((CostumerId == null) ? 0 : CostumerId.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + CostumerId + ", name=" + FullName + "]";
 	}
 
 }
