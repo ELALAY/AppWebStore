@@ -2,7 +2,11 @@ package com.packt.webstore.domain.repository.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.springframework.stereotype.Repository;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
@@ -69,17 +73,17 @@ public class InMemoryProductRepository implements ProductRepository {
 		
 	}
 
-	public Set<Product> getProductByFilter(Map<String, List<String> > filterParams) {
-		Set<Product> productByBrand    = new HashSet<Product>();
-		Set<Product> productByCategory = new HashSet<Product>();
+	public Set<Product> getProductsByFilter(Map<String, List<String> > filterParams) {
+		Set<Product> producstByBrand    = new HashSet<Product>();
+		Set<Product> productsByCategory = new HashSet<Product>();
 
-		Set<Product> criterias = filterParams.keySet();
+		Set<String> criterias = filterParams.keySet();
 
 		if (criterias.contains("brand")) {
 			for (String brandName: filterParams.get("brand")) {
 				for (Product product: listOfProducts) {
 					if (brandName.equalsIgnoreCase(product.getManifacturer())) {
-						productsByBrand.add(product);
+						producstByBrand.add(product);
 					}
 				}
 			}
@@ -91,9 +95,9 @@ public class InMemoryProductRepository implements ProductRepository {
 			}
 		}
 
-		productsByCategory.tetainAll(productsByBrand);
+		productsByCategory.retainAll(producstByBrand);
 
-		return productsByBrand
+		return producstByBrand;
 	}
 
 
