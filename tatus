@@ -1,0 +1,80 @@
+[1mdiff --git a/webstore/src/main/java/com/packt/webstore/controller/ProductController.java b/webstore/src/main/java/com/packt/webstore/controller/ProductController.java[m
+[1mindex e5287b3..976ab48 100644[m
+[1m--- a/webstore/src/main/java/com/packt/webstore/controller/ProductController.java[m
+[1m+++ b/webstore/src/main/java/com/packt/webstore/controller/ProductController.java[m
+[36m@@ -24,5 +24,11 @@[m [mpublic class ProductController {[m
+ 		model.addAttribute("Products", productServiceImpl.getProductByCategory(productCategory));[m
+ 		return  "products";[m
+ 	}[m
+[32m+[m
+[32m+[m	[32m@RequestMapping("/filter/{ByCriteria}")[m
+[32m+[m	[32mpublic String getProductByFilter(@MatrixVarianle(PathVar="ByCriteria") Map<String, List<String>> filterParams, Model model) {[m
+[32m+[m		[32mmodel.addAttribute("products", productServiceImpl.getProductByFilter(filterParams));[m
+[32m+[m		[32mreturn "product";[m[41m		[m
+[32m+[m	[32m}[m
+ 	[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/webstore/src/main/java/com/packt/webstore/domain/repository/ProductRepository.java b/webstore/src/main/java/com/packt/webstore/domain/repository/ProductRepository.java[m
+[1mindex 050e7ad..e5f26bb 100644[m
+[1m--- a/webstore/src/main/java/com/packt/webstore/domain/repository/ProductRepository.java[m
+[1m+++ b/webstore/src/main/java/com/packt/webstore/domain/repository/ProductRepository.java[m
+[36m@@ -10,4 +10,6 @@[m [mpublic interface ProductRepository  {[m
+ 	Product getProductById(String productID);[m
+ 	[m
+ 	List<Product> getProductsByCategory(String category);[m
+[32m+[m
+[32m+[m	[32mSet<Product> getProductByFilter(Map<String, List<String> > filterParams);[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/webstore/src/main/java/com/packt/webstore/domain/repository/impl/InMemoryProductRepository.java b/webstore/src/main/java/com/packt/webstore/domain/repository/impl/InMemoryProductRepository.java[m
+[1mindex baa423d..d548ce0 100644[m
+[1m--- a/webstore/src/main/java/com/packt/webstore/domain/repository/impl/InMemoryProductRepository.java[m
+[1m+++ b/webstore/src/main/java/com/packt/webstore/domain/repository/impl/InMemoryProductRepository.java[m
+[36m@@ -69,5 +69,32 @@[m [mpublic class InMemoryProductRepository implements ProductRepository {[m
+ 		[m
+ 	}[m
+ [m
+[32m+[m	[32mpublic Set<Product> getProductByFilter(Map<String, List<String> > filterParams) {[m
+[32m+[m		[32mSet<Product> productByBrand    = new HashSet<Product>();[m
+[32m+[m		[32mSet<Product> productByCategory = new HashSet<Product>();[m
+[32m+[m
+[32m+[m		[32mSet<Product> criterias = filterParams.keySet();[m
+[32m+[m
+[32m+[m		[32mif (criterias.contains("brand")) {[m
+[32m+[m			[32mfor (String brandName: filterParams.get("brand")) {[m
+[32m+[m				[32mfor (Product product: listOfProducts) {[m
+[32m+[m					[32mif (brandName.equalsIgnoreCase(product.getManifacturer())) {[m
+[32m+[m						[32mproductsByBrand.add(product);[m
+[32m+[m					[32m}[m
+[32m+[m				[32m}[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32mif (criterias.contains("category")) {[m
+[32m+[m			[32mfor (String category: filterParams.get("category")) {[m
+[32m+[m				[32mproductsByCategory.addAll(this.getProductsByCategory(category));[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32mproductsByCategory.tetainAll(productsByBrand);[m
+[32m+[m
+[32m+[m		[32mreturn productsByBrand[m
+[32m+[m	[32m}[m
+[32m+[m
+ [m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/webstore/src/main/java/com/packt/webstore/service/ProductService.java b/webstore/src/main/java/com/packt/webstore/service/ProductService.java[m
+[1mindex 818e290..827d312 100644[m
+[1m--- a/webstore/src/main/java/com/packt/webstore/service/ProductService.java[m
+[1m+++ b/webstore/src/main/java/com/packt/webstore/service/ProductService.java[m
+[36m@@ -7,5 +7,7 @@[m [mpublic interface ProductService {[m
+ 	List<Product> getAllProducts();[m
+ 	[m
+ 	List<Product> getProductByCategory(String category);[m
+[32m+[m
+[32m+[m	[32mSet<Product> getProductByFilter(Map<String, Lit<Product> > filterParams);[m
+ 	[m
+ }[m
+\ No newline at end of file[m
