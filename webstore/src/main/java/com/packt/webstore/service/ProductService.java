@@ -7,5 +7,7 @@ public interface ProductService {
 	List<Product> getAllProducts();
 	
 	List<Product> getProductByCategory(String category);
+
+	Set<Product> getProductByFilter(Map<String, Lit<Product> > filterParams);
 	
 }

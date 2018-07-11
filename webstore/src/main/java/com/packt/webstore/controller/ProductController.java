@@ -24,5 +24,11 @@ public class ProductController {
 		model.addAttribute("Products", productServiceImpl.getProductByCategory(productCategory));
 		return  "products";
 	}
+
+	@RequestMapping("/filter/{ByCriteria}")
+	public String getProductByFilter(@MatrixVarianle(PathVar="ByCriteria") Map<String, List<String>> filterParams, Model model) {
+		model.addAttribute("products", productServiceImpl.getProductByFilter(filterParams));
+		return "product";		
+	}
 	
 }
