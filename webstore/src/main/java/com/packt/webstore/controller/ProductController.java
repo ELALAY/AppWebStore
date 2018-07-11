@@ -10,29 +10,37 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.packt.webstore.service.impl.ProductServiceImpl;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.packt.webstore.service.ProductService;
 
 @Controller
 public class ProductController {
 	@Autowired
-	private ProductServiceImpl productServiceImpl;
+	private ProductService productService;
 
 	@RequestMapping("/all")
 	public String list(Model model) {
-		model.addAttribute("products", productServiceImpl.getAllProducts());
+		model.addAttribute("products", productService.getAllProducts());
 		return "products";
 	}
 	
 	@RequestMapping("/{category}")
 	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
-		model.addAttribute("Products", productServiceImpl.getProductsByCategory(productCategory));
+		model.addAttribute("Products", productService.getProductsByCategory(productCategory));
 		return  "products";
 	}
 
 	@RequestMapping("/filter/{ByCriteria}")
 	public String getProductByFilter(@MatrixVariable(pathVar="ByCriteria") Map<String, List<String> > filterParams, Model model) {
-		model.addAttribute("products", productServiceImpl.getProductsByFilter(filterParams));
+		model.addAttribute("products", productService.getProductsByFilter(filterParams));
 		return "product";		
+	}
+
+	@RequestMapping("/product")
+	public String getProductById(@RequestParam("id") String productId, Model model) {
+		model.addAttribute("/product", productService.getProductById(productId));
+		return "product";
 	}
 	
 }

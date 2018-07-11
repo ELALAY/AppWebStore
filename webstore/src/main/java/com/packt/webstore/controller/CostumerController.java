@@ -5,16 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.packt.webstore.service.CostumerService;
 import com.packt.webstore.service.impl.CostumerServiceImpl;
 
 @Controller 
 public class CostumerController {
 	@Autowired
-	private CostumerServiceImpl costumerServiceImpl;
+	private CostumerService costumerService;
 
 	@RequestMapping("/costumers")
 	public  String List(Model model) {
-		model.addAttribute("costumers", costumerServiceImpl.getAllCostumers());
+		model.addAttribute("costumers", costumerService.getAllCostumers());
 		return "costumers";
 	}
 }
