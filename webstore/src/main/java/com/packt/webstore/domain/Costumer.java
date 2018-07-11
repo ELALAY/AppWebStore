@@ -8,38 +8,50 @@ public class Costumer{
 	private String FullName;
 	private String Address;
 	private BigDecimal NoOfOrdersMade;
+	
+	public Costumer() {
+		super();
+	}
 
-	String getCostumerId() {
+	public Costumer(String CostumerId, String FullName, String Address, BigDecimal NoOfOrdersMade) {
+		this.CostumerId = CostumerId;
+		this.FullName = FullName;
+		this.Address = Address;
+		this.NoOfOrdersMade = NoOfOrdersMade;
+	}
+
+	public String getCostumerId() {
 		return this.CostumerId;
 	}
 
-	void setCostumerId(String CostumerId) {
+	public void setCostumerId(String CostumerId) {
 		this.CostumerId = CostumerId;
 	}
 	
-	String getFullName() {
+	public String getFullName() {
 		return this.FullName;
 	}
 
-	void setFullName(String FullName) {
+	public void setFullName(String FullName) {
 		this.FullName = FullName;
 	}
 
-	void setAddress(String Address) {
+	public void setAddress(String Address) {
 		this.Address = Address;
 	}
 
-	String getAddress() {
+	public String getAddress() {
 		return this.Address;
 	}
 
-	BigDecimal getNoOfOrdersMade() {
+	public BigDecimal getNoOfOrdersMade() {
 		return this.NoOfOrdersMade;
 	}
 
-	void setNoOfOrdersMade(BigDecimal NoOfOrdersMade) {
+	public void setNoOfOrdersMade(BigDecimal NoOfOrdersMade) {
 		this.NoOfOrdersMade = NoOfOrdersMade;
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {
