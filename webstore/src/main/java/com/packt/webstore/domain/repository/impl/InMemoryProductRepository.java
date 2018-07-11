@@ -55,5 +55,18 @@ public class InMemoryProductRepository implements ProductRepository {
 		}
 		return productById;
 	}
+	
+	public List<Product> getProductsByCategoty(String category) {
+		List<Product> productsByCategory = new ArrayList<Product>();
+		
+		for (Product product : listOfProducts) {
+			if (category.equals(product.getCategory())) {
+				productsByCategory.add(product);
+			}
+		}
+		
+		return listOfProducts;
+		
+	}
 
 }

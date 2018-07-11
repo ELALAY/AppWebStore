@@ -12,7 +12,7 @@ public class ProductController {
 	@Autowired
 	private ProductServiceImpl productServiceImpl;
 
-	@RequestMapping("/products")
+	@RequestMapping("/all")
 	public String list(Model model) {
 		model.addAttribute("products", productServiceImpl.getAllProducts());
 		return "products";
