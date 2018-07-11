@@ -9,5 +9,5 @@ public interface ProductRepository  {
 
 	Product getProductById(String productID);
 	
-	List<Product> getProductByCategory(String category);
+	List<Product> getProductsByCategory(String category);
 }

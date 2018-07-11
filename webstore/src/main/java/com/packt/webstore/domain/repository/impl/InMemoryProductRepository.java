@@ -56,7 +56,7 @@ public class InMemoryProductRepository implements ProductRepository {
 		return productById;
 	}
 	
-	public List<Product> getProductsByCategoty(String category) {
+	public List<Product> getProductsByCategory(String category) {
 		List<Product> productsByCategory = new ArrayList<Product>();
 		
 		for (Product product : listOfProducts) {
@@ -68,5 +68,6 @@ public class InMemoryProductRepository implements ProductRepository {
 		return listOfProducts;
 		
 	}
+
 
 }
