@@ -7,7 +7,7 @@ public class Product {
 	private String name;
 	private BigDecimal unitPrice;
 	private String description;
-	private String manifacturer;
+	private String manufacturer;
 	private String category;
 	private long unitsInStock;
 	private long unitsInOrder;
@@ -56,12 +56,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getManifacturer() {
-		return manifacturer;
+	public String getManufacturer() {
+		return manufacturer;
 	}
 
-	public void setManifacturer(String manifacturer) {
-		this.manifacturer = manifacturer;
+	public void setManufacturer(String manifacturer) {
+		this.manufacturer = manifacturer;
 	}
 
 	public String getCategory() {
