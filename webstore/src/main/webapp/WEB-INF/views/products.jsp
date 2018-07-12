@@ -31,7 +31,7 @@
 					<strong>category</strong> : ${product.category}
 				</p>
 				<p>
-					<strong>Availble units in stock </strong> : ${product.unitsInStock}
+					<strong>Availbale units in stock </strong> : ${product.unitsInStock}
 				</p>
 				<p>
 					<a href=" <spring:url value= "/products/product?
