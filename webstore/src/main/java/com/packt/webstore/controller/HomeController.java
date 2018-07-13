@@ -1,12 +1,8 @@
 package com.packt.webstore.controller;
 
-import java.math.BigDecimal;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.packt.webstore.domain.Product;
 
 @Controller
 public class HomeController {
@@ -19,6 +15,5 @@ public class HomeController {
 		System.out.println("Here in the homecontroller");
 		
 		return str;
-	}
-	
+	}	
 }
