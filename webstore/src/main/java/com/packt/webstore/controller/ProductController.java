@@ -13,6 +13,7 @@ public class ProductController {
 	
 	@RequestMapping("/products")
 	public String list(Model model) {
+		String str = "products";
 		Product iphone = new Product("P1234","iPhone 5s", new BigDecimal(500));
 		iphone.setDescription("Apple iPhone 5s smartphone with 4.00-inch 640x1136 display and 8-megapixel rear camera");
 		iphone.setCategory("Smart Phone");
@@ -21,7 +22,7 @@ public class ProductController {
 
 		model.addAttribute("products", iphone);
 
-		return "products";
+		return str;
 	}
 	
 }
