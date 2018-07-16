@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.packt.webstore.domain.Costumer;
+
 @Service
-public class CostumerService {
+public interface CostumerService {
 	List<Costumer> getAllCostumers();
 }
