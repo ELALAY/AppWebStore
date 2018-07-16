@@ -9,17 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.packt.webstore.service.ProductService;
 
 @Controller
+@RequestMapping("/products")
 public class ProductController {
+
+	@Autowired
+	private ProductService productService;
 	
-	@RequestMapping("/products")
+	@RequestMapping
 	public String list(Model model) {
 		String str = "products";
-		model.addAttribute("products", productRepository.getAllProducts());
+		model.addAttribute("products", productService.getAllProducts());
 
 		return str;
 	}
 	
-	@Autowired
-	private ProductService productRepository;
+	@RequestMapping("/all")
+	public String allProducts(Model model) {
+		model.addAttribute("products", productService.getAllProducts());
+		return "produts";
+	}
+	
 	
 }
