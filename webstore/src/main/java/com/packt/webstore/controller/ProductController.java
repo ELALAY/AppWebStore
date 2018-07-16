@@ -14,12 +14,12 @@ public class ProductController {
 	@RequestMapping("/products")
 	public String list(Model model) {
 		String str = "products";
-		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("products", productRepository.getAllProducts());
 
 		return str;
 	}
 	
 	@Autowired
-	private ProductService productService;
+	private ProductService productRepository;
 	
 }

@@ -3,8 +3,8 @@ package com.packt.webstore.domain;
 import java.math.BigDecimal;
 
 public class Product {
-	private String productId;
-	private String name;
+	private String ProductId;
+	private String Name;
 	private BigDecimal unitPrice;
 	private String description;
 	private String manufacturer;
@@ -19,25 +19,25 @@ public class Product {
 	}
 
 	public Product(String productId, String name, BigDecimal unitPrice) {
-		this.productId = productId;
-		this.name = name;
+		this.ProductId = productId;
+		this.Name = name;
 		this.unitPrice = unitPrice;
 	}
 
 	public String getProductId() {
-		return this.productId;
+		return this.ProductId;
 	}
 
 	public void setProductId(String productId) {
-		this.productId = productId;
+		this.ProductId = productId;
 	}
 
 	public String getName() {
-		return this.name;
+		return this.Name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.Name = name;
 	}
 
 	public BigDecimal getUnitPrice() {
@@ -112,9 +112,9 @@ public class Product {
 
 		Product other = (Product) obj;
 	
-		if (productId == null) {
-			if (other.productId != null) return false;
-		} else if (!productId.equals(other.productId))	return false;
+		if (ProductId == null) {
+			if (other.ProductId != null) return false;
+		} else if (!ProductId.equals(other.ProductId))	return false;
 		return true;
 	}
 
@@ -122,13 +122,13 @@ public class Product {
 	public int hashCode() {
 		final int prime = 32;
 		int result = 1;
-		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((ProductId == null) ? 0 : ProductId.hashCode());
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + "]";
+		return "Product [productId=" + ProductId + ", name=" + Name + "]";
 	}
 	
 }
