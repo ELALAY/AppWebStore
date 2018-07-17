@@ -1,5 +1,6 @@
 package com.packt.webstore.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,4 +17,6 @@ public interface ProductService {
 	Set<Product> getProductsByFilter(Map<String, List<String>> filterParam);
 	
 	List<Product> getProductsByManufacturer(String manufacturer);	
+	
+	List<Product> getProductsByPriceRange(BigDecimal low, BigDecimal high);
 }

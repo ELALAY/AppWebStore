@@ -53,7 +53,7 @@ public class ProductController {
 		return "product";
 	}
 	
-	//@RequestMapping("/PriceRange/")
-	//@requestParam("price_low") BigDecimal price_low, same but higher price
+	//@RequestMapping("/price/")
+	//@requestParam("low") BigDecimal price_low, same but higher price
 	
 }

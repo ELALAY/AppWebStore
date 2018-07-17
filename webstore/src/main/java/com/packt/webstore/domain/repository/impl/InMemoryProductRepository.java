@@ -135,7 +135,7 @@ public class InMemoryProductRepository implements ProductRepository {
 		List<Product> productsByPriceRange = new ArrayList<Product>();
 		
 		for (Product p : listOfProducts) {
-			if ( (p.getUnitPrice().compareTo(high) < 0 && p.getUnitPrice().compareTo(low) > 0) || p.getUnitPrice().compareTo(high) == 0 || p.getUnitPrice().compareTo(low) == 0) {
+			if ( (p.getUnitPrice().compareTo(high) <= 0 && p.getUnitPrice().compareTo(low) >= 0)) { //|| p.getUnitPrice().compareTo(high) == 0 || p.getUnitPrice().compareTo(low) == 0) {
 				productsByPriceRange.add(p);
 			}
 		}
