@@ -77,6 +77,8 @@ public class InMemoryProductRepository implements ProductRepository {
 	public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
 		Set<Product> productsByBrand = new HashSet<Product>();
 		Set<Product> productsByCategory = new HashSet<Product>();
+		//Set<Product> productsByPriceRange = new HashSet<Product>();
+		//Set<Product> productsByManufacturer = new HashSet<Product>();
 		
 		Set<String> criterias = filterParams.keySet();
 		
@@ -96,8 +98,23 @@ public class InMemoryProductRepository implements ProductRepository {
 		
 			}
 		}
+		/*
+		if (criterias.contains("manufacturer")) {
+			for (String manufacturer : filterParams.get("manufacturer")) {
+				productsByManufacturer.addAll(this.getProductsByManufacturer(manufacturer));
+			}
+		}
+		
+		if (criterias.contains("price")) {
+			for (BigDecimal b : filterParams.get(low)) {
+				productsByPriceRange.addAll(this.getProductsByPriceRange(low, high)));
+			}
+		}
+		*/
 		
 		productsByCategory.retainAll(productsByBrand);
+		//productsByCategory.retainAll(productsByManufacturer);
+		//productsByCategory.retainAll(productsByPriceRange);
 		
 		return productsByCategory;		
 	}
@@ -112,6 +129,18 @@ public class InMemoryProductRepository implements ProductRepository {
 		}
 		
 		return productsByManufacturer;
+	}
+	
+	public List<Product> getProductsByPriceRange(BigDecimal low, BigDecimal high) {
+		List<Product> productsByPriceRange = new ArrayList<Product>();
+		
+		for (Product p : listOfProducts) {
+			if ( (p.getUnitPrice().compareTo(high) < 0 && p.getUnitPrice().compareTo(low) > 0) || p.getUnitPrice().compareTo(high) == 0 || p.getUnitPrice().compareTo(low) == 0) {
+				productsByPriceRange.add(p);
+			}
+		}
+		
+		return productsByPriceRange;
 	}
 	
 }
