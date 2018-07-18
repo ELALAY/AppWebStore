@@ -31,7 +31,7 @@ tstrap.min.css">
 							class="form:input-large" />
 					</div>
 				</div>
-				<!-- Similarly bind <form:input> tag for
+				<!-- Similarly bind <form:input/> tag for
 name,unitPrice,manufacturer,category,unitsInStock and unitsInOrder
 fields-->
 				<div class="form-group">
