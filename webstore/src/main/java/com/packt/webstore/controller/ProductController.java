@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.service.ProductService;
 
@@ -67,7 +65,9 @@ public class ProductController {
 
 
 	@RequestMapping("/{category}/{price}")
-	public String filterProducts(@PathVariable("category") String productCategory, @MatrixVariable(pathVar="price") Map<String, List<String>> priceParams, @RequestParam("manufacturer") String manufacturer, Model model) {
+	public String filterProducts(@PathVariable("category") String productCategory, @MatrixVariable(pathVar="price") Map<String, 
+			List<String>> priceParams, @RequestParam("manufacturer") String manufacturer, Model model) {
+		
 		Set<Product> filteredProducts = new HashSet<Product>();
 	
 		List <Product> productsByCategory = productService.getProductsByCategory(productCategory);

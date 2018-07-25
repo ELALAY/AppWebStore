@@ -18,9 +18,11 @@ public class inMemoryCustomerRepository implements CustomerRepository {
 		first.setAddress("222 Road St.");
 		first.setNoOfOrdersMade(5);
 		first.setCustomerId("10001");
+		
 		Customer second = new Customer("Ben", "111 Beard Ln.");
 		second.setCustomerId("10002");
 		second.setNoOfOrdersMade(11);
+		
 		Customer third = new Customer("Erin", "1324 Get Dolled Way");
 		third.setCustomerId("10003");
 		third.setNoOfOrdersMade(100);
