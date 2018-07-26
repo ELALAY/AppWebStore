@@ -31,7 +31,7 @@
 							
 							<p>
 								<a
-									href=" <spring:url value="/customers/customer?id=${customer.customerId}" /> "
+									href=" <spring:url value="/customers/customer_page?id=${customer.customerId}" /> "
 									class="btn btn-primary"> <span
 									class="glyphicon-info-sign glyphicon" /></span> Details
 								</a>

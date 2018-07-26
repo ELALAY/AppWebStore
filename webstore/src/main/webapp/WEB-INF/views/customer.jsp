@@ -6,38 +6,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>${product.name}</title>
+<title>${customer.customerName}</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Products</h1>
+				<h1>${customer.customerName}</h1>
 			</div>
 		</div>
 	</section>
 	<section class="container">
 		<div class="row">
 			<div class="col-md-5">
-				<h3>${product.name}</h3>
-				<p>${product.description}</p>
+				<h3>${customer.customerAddress}</h3>
 				<p>
-					<strong>Item Code : </strong><span class="label label-warning">${product.productId}</span>
+					<strong>Customer ID: </strong><span class="label label-warning">${customer.customerId}</span>
 				</p>
+				
+				
 				<p>
-					<strong>manufacturer</strong> : ${product.manufacturer}
-				</p>
-				<p>
-					<strong>category</strong> : ${product.category}
-				</p>
-				<p>
-					<strong>Available units in stock </strong> : ${product.unitsInStock}
-				</p>
-				<h4>${product.unitPrice} USD</h4>
-				<p>
+					<strong>This customer has made </strong> : ${customer.customerNoOfOrdersMade} of Orders on our WebStrore!
+				
 					<a href="#" class="btn btn-warning btn-large"> <span
-						class="glyphicon-shopping-cart glyphicon"></span> Order Now
-					</a> <a href="<spring:url value="/products" />" class="btn btn-default">
+						class="glyphicon-shopping-cart glyphicon"></span> Follow
+					</a> <a href="<spring:url value="/customers" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back
 					</a>
 
