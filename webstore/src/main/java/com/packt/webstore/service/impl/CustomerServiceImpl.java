@@ -13,9 +13,13 @@ import com.packt.webstore.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
-	private CustomerRepository costumerRepository;
+	private CustomerRepository customerRepository;
 
 	public List<Customer> getAllCustomers() {
-		return costumerRepository.getAllCustomers();
+		return customerRepository.getAllCustomers();
+	}
+	
+	public Customer getCustomerById(String customerId) {
+		return customerRepository.getCustomerById(customerId);
 	}
 }
