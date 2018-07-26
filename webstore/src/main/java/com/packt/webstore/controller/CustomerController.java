@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.packt.webstore.service.CustomerService;
 
 @Controller
+@RequestMapping("/customers")
 public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
-
-	@RequestMapping("/customers")
+	
+	@RequestMapping
 	public String List_Customers(Model model) {
 		model.addAttribute("customers", customerService.getAllCustomers());
 		return "customers";
