@@ -31,9 +31,6 @@
 					<strong>category</strong> : ${product.category}
 				</p>
 				<p>
-					<strong>Condition</strong> : ${product.condition}
-				</p>
-				<p>
 					<strong>Availble units in stock </strong> : ${product.unitsInStock}
 				</p>
 				<h4>${product.unitPrice} USD</h4>
