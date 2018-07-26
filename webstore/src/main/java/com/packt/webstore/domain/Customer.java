@@ -1,50 +1,50 @@
 package com.packt.webstore.domain;
 
 public class Customer {
-	private String CustomerId;
-	private String CustomerName;
-	private String CustomerAddress;
-	private long CustomerNoOfOrdersMade;
+	private String customerId;
+	private String customerName;
+	private String customerAddress;
+	private long customerNoOfOrdersMade;
 	
 	public Customer() {
 		
 	}
 	
 	public Customer (String CustomerName, String CustomerAddress) {
-		this.CustomerName = CustomerName;
-		this.CustomerAddress = CustomerAddress;
+		this.customerName = CustomerName;
+		this.customerAddress = CustomerAddress;
 	}
 
 	public String getCustomerId() {
-		return CustomerId;
+		return customerId;
 	}
 
 	public void setCustomerId(String customerId) {
-		CustomerId = customerId;
+		this.customerId = customerId;
 	}
 
 	public String getCustomerName() {
-		return CustomerName;
+		return customerName;
 	}
 
 	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
+		this.customerName = customerName;
 	}
 
 	public String getCustomerAddress() {
-		return CustomerAddress;
+		return customerAddress;
 	}
 
 	public void setCustomerAddress(String customerAddress) {
-		CustomerAddress = customerAddress;
+		this.customerAddress = customerAddress;
 	}
 
 	public long getCustomerNoOfOrdersMade() {
-		return CustomerNoOfOrdersMade;
+		return customerNoOfOrdersMade;
 	}
 
 	public void setCustomerNoOfOrdersMade(long customerNoOfOrdersMade) {
-		CustomerNoOfOrdersMade = customerNoOfOrdersMade;
+		this.customerNoOfOrdersMade = customerNoOfOrdersMade;
 	}
 
 	@Override
@@ -56,33 +56,33 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if (CustomerAddress == null) {
-			if (other.CustomerAddress != null)
+		if (customerAddress == null) {
+			if (other.customerAddress != null)
 				return false;
-		} else if (!CustomerAddress.equals(other.CustomerAddress))
+		} else if (!customerAddress.equals(other.customerAddress))
 			return false;
-		if (CustomerId == null) {
-			if (other.CustomerId != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!CustomerId.equals(other.CustomerId))
+		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (CustomerName == null) {
-			if (other.CustomerName != null)
+		if (customerName == null) {
+			if (other.customerName != null)
 				return false;
-		} else if (!CustomerName.equals(other.CustomerName))
+		} else if (!customerName.equals(other.customerName))
 			return false;
-		if (CustomerNoOfOrdersMade == 0) {
-			if (other.CustomerNoOfOrdersMade != 0)
+		if (customerNoOfOrdersMade == 0) {
+			if (other.customerNoOfOrdersMade != 0)
 				return false;
-		} else if (CustomerNoOfOrdersMade != other.CustomerNoOfOrdersMade)
+		} else if (customerNoOfOrdersMade != other.customerNoOfOrdersMade)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [CustomerId=" + CustomerId + ", CustomerName=" + CustomerName + ", CustomerAddress="
-				+ CustomerAddress + ", CustomerNoOfOrdersMade=" + CustomerNoOfOrdersMade + "]";
+		return "Customer [CustomerId=" + customerId + ", CustomerName=" + customerName + ", CustomerAddress="
+				+ customerAddress + ", CustomerNoOfOrdersMade=" + customerNoOfOrdersMade + "]";
 	}
 	
 	

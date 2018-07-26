@@ -18,7 +18,7 @@ public class inMemoryCustomerRepository implements CustomerRepository{
 		c1.setCustomerId("001");
 		c1.setCustomerNoOfOrdersMade(301);
 		
-		Customer c2 = new Customer("nada", "marrakech");
+		Customer c2 = new Customer("Nada", "Marrakech");
 		c2.setCustomerId("002");
 		c2.setCustomerNoOfOrdersMade(750);
 		

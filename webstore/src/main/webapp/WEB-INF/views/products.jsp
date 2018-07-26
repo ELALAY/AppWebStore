@@ -35,7 +35,6 @@
 									class="glyphicon-info-sign glyphicon" /></span> Details
 								</a>
 							</p>
-
 						</div>
 					</div>
 				</div>
