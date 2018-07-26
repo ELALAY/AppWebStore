@@ -20,13 +20,13 @@
 		<div class="row">
 			<div class="col-md-5">
 				<h3>${customer.customerAddress}</h3>
+				
 				<p>
-					<strong>Customer ID: </strong><span class="label label-warning">${customer.customerId}</span>
+					<strong>Item Code : </strong><span class="label label-warning">${product.productId}</span>
 				</p>
 				
-				
 				<p>
-					<strong>This customer has made </strong> : ${customer.customerNoOfOrdersMade} of Orders on our WebStrore!
+					<strong>This client has made around: </strong> ${customer.customerNoOfOrdersMade} Orders
 				
 					<a href="#" class="btn btn-warning btn-large"> <span
 						class="glyphicon-shopping-cart glyphicon"></span> Follow

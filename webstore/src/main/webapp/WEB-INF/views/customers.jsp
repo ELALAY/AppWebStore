@@ -13,7 +13,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Customers</h1>
-				<p>All the customers that are subscribes to store</p>
+				<p>All the customers that are subscribed to store</p>
 			</div>
 		</div>
 	</section>
@@ -31,7 +31,7 @@
 							
 							<p>
 								<a
-									href=" <spring:url value="/customers/customer_page?id=${customer.customerId}" /> "
+									href=" <spring:url value="/customers/profile?id=${customer.customerId}" /> "
 									class="btn btn-primary"> <span
 									class="glyphicon-info-sign glyphicon" /></span> Details
 								</a>

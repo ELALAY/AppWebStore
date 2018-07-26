@@ -20,9 +20,9 @@ public class CustomerController {
 		return "customers";
 	}
 	
-	@RequestMapping("/customer")
+	@RequestMapping("/profile")
 	public String getProductById(@RequestParam("id") String customerId, Model model) {
 		model.addAttribute("customer", customerService.getCustomerById(customerId));
-		return "customer";
+		return "customer_profile";
 	}
 }
