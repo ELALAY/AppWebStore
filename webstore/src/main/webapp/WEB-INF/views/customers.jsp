@@ -27,7 +27,7 @@
 							<h3>${customer.customerName}</h3>
 							<p>${customer.customerAddress}</p>
 							<p>${customer.customerNoOfOrdersMade} Orders made on our store</p>
-							<p>Customer ID: ${customer.customerId}</p>
+							<p>Customer ID: <span class="label label-warning">${customer.customerId}</span></p>
 							
 							<p>
 								<a
