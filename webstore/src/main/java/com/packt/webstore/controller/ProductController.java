@@ -1,5 +1,6 @@
 package com.packt.webstore.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import java.util.Map;
@@ -32,9 +33,9 @@ public class ProductController {
 	}
 
 	@RequestMapping("/all")
-	public ModelAndView allProducts() {
+	public ModelAndView allProducts() throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
-
+		//productService.ReadProducts();
 		modelAndView.addObject("products", productService.getAllProducts());
 		modelAndView.setViewName("products");
 		return modelAndView;
@@ -67,8 +68,9 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct) {
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct) throws IOException {
 		productService.addProduct(newProduct);
+		//productService.WriteProducts();
 		return "redirect:/products";
 	}
 

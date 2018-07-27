@@ -1,5 +1,6 @@
 package com.packt.webstore.service.impl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -37,4 +38,13 @@ public class ProductServiceImpl implements ProductService{
 		productRepository.addProduct(product);
 	}
 
+	public void ReadProducts() throws IOException {
+		productRepository.ReadProducts();
+	}
+
+	public void WriteProducts() throws IOException {
+		productRepository.WriteProducts();		
+	}
 }
+
+	

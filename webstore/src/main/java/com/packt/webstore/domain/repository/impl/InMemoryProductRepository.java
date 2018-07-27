@@ -132,20 +132,22 @@ public class InMemoryProductRepository implements ProductRepository {
 
 	}
 
-	public void WriteProducts() {
+	public void WriteProducts() throws IOException {
 		// The name of the file to open.
-		String fileName = "Products.txt";
+		String filePath = "C:\\Users\\hp\\Documents\\workspace-sts-3.9.5.RELEASE\\AppWebStore\\webstore\\src\\DataBaseFileSystem\\Products.txt";
 
 		try {
 			// Assume default encoding.
-			FileWriter fileWriter = new FileWriter(fileName);
+			FileWriter fileWriter = new FileWriter(filePath);
 
 			// Always wrap FileWriter in BufferedWriter.
 			BufferedWriter outFile = new BufferedWriter(fileWriter);
 
 			// Note that write() does not automatically
 			// append a newline character.
-
+			
+			outFile.write(listOfProducts.size());
+			outFile.newLine();
 			for (Product product : listOfProducts) {
 				if (!product.getProductId().isEmpty()) {
 					outFile.write(product.getProductId());
@@ -199,17 +201,11 @@ public class InMemoryProductRepository implements ProductRepository {
 				outFile.newLine();
 				outFile.newLine();
 			}
-			outFile.write("Hello there,");
-
-			outFile.write(" here is some text.");
-			outFile.newLine();
-			outFile.write("We are writing");
-			outFile.write(" the text to the file.");
-
+			
 			// Always close files.
 			outFile.close();
 		} catch (IOException ex) {
-			System.out.println("Error writing to file '" + fileName + "'");
+			System.out.println("Error writing to file '" + filePath + "'");
 			// Or we could just do this:
 			// ex.printStackTrace();
 		}
