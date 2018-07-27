@@ -12,7 +12,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public void processOrder(String productId, long quantity) {
+	public void processOrder(String productId, int quantity) {
 		Product productById = productRepository.getProductById(productId);
 		
 		if(productById.getUnitsInStock() < quantity){
@@ -21,4 +21,5 @@ public class OrderServiceImpl implements OrderService{
 		
 		productById.setUnitsInStock(productById.getUnitsInStock() - quantity);
 	}
+
 }
