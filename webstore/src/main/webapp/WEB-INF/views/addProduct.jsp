@@ -38,7 +38,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="productId">Product Price</label>
 						<div class="col-lg-10">
-							<form:input id="unitPrice" path="unitPrice" type="double" class="form:input-large" />
+							<form:input id="unitPrice" path="unitPrice" type="int" class="form:input-large" />
 						</div>
 					</div>
 					
@@ -59,7 +59,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="productId">Product units in stock</label>
 						<div class="col-lg-10">
-							<form:input id="unitsInStock" path="unitsInStock" type="long" class="form:input-large" />
+							<form:input id="unitsInStock" path="unitsInStock" type="int" class="form:input-large" />
 						</div>
 					</div>
 					

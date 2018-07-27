@@ -12,7 +12,7 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Products</h1>
+				<h1>${product.name}</h1>
 			</div>
 		</div>
 	</section>

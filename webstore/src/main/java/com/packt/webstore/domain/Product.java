@@ -4,19 +4,19 @@ public class Product {
 
 	private String productId;
 	private String name;
-	private double unitPrice;
+	private int unitPrice;
 	private String description;
 	private String manufacturer;
 	private String category;
-	private long unitsInStock;
-	private long unitsInOrder;
-	private boolean discontinued;
+	private int unitsInStock;
+	private int unitsInOrder;
+	private Boolean discontinued = false;
 
 	public Product() {
 		super();
 }
 
-	public Product(String productId, String name, double unitPrice) {
+	public Product(String productId, String name, int unitPrice) {
 		this.productId = productId;
 		this.name = name;
 		this.unitPrice = unitPrice;
@@ -38,11 +38,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getUnitPrice() {
+	public int getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(double unitPrice) {
+	public void setUnitPrice(int unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -70,19 +70,19 @@ public class Product {
 		this.category = category;
 	}
 
-	public long getUnitsInStock() {
+	public int getUnitsInStock() {
 		return unitsInStock;
 	}
 
-	public void setUnitsInStock(long unitsInStock) {
+	public void setUnitsInStock(int unitsInStock) {
 		this.unitsInStock = unitsInStock;
 	}
 
-	public long getUnitsInOrder() {
+	public int getUnitsInOrder() {
 		return unitsInOrder;
 	}
 
-	public void setUnitsInOrder(long unitsInOrder) {
+	public void setUnitsInOrder(int unitsInOrder) {
 		this.unitsInOrder = unitsInOrder;
 	}
 
@@ -92,6 +92,10 @@ public class Product {
 
 	public void setDiscontinued(boolean discontinued) {
 		this.discontinued = discontinued;
+	}
+	
+	public Boolean getDiscontinued() {
+		return discontinued;
 	}
 
 	@Override

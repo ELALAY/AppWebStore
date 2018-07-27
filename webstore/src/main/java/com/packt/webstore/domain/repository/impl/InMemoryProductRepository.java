@@ -1,8 +1,10 @@
 package com.packt.webstore.domain.repository.impl;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -79,34 +81,45 @@ public class InMemoryProductRepository implements ProductRepository {
 			// Always wrap FileReader in BufferedReader.
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-			if ((line = bufferedReader.readLine()) != null) {
-				readProduct.setProductId(line);
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setName(line);
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setUnitPrice(Double.parseDouble(line));
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setDescription(line);
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setManufacturer(line);
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setCategory(line);
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setUnitsInStock(Long.parseLong(line));
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setUnitsInOrder(Long.parseLong(line));
-			} else if ((line = bufferedReader.readLine()) != null) {
-				if (!line.equals("/"))
-					readProduct.setDiscontinued(Boolean.parseBoolean(line));
+			// See how many products do we have first
+			int nProducts = 0;
+			String r;
+			if ((r = bufferedReader.readLine()) != null) {
+				nProducts = Integer.parseInt(r);
+				
 			}
 
+			for (int i=0; i<nProducts; ++i) {
+				if ((line = bufferedReader.readLine()) != null) {
+					readProduct.setProductId(line);
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setName(line);
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setUnitPrice(Integer.parseInt(line));
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setDescription(line);
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setManufacturer(line);
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setCategory(line);
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setUnitsInStock(Integer.parseInt(line));
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setUnitsInOrder(Integer.parseInt(line));
+				} else if ((line = bufferedReader.readLine()) != null) {
+					if (!line.equals("/"))
+						readProduct.setDiscontinued(Boolean.parseBoolean(line));
+				}
+
+				listOfProducts.add(readProduct);
+			}
 			// Always close files.
 			bufferedReader.close();
 		} catch (FileNotFoundException ex) {
@@ -120,25 +133,86 @@ public class InMemoryProductRepository implements ProductRepository {
 	}
 
 	public void WriteProducts() {
-		/*
-		 * if ((line = bufferedReader.readLine()) != null) {
-		 * readProduct.setProductId(line); } else if ((line = bufferedReader.readLine())
-		 * != null) { if (!line.equals("/")) readProduct.setName(line); } else if ((line
-		 * = bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setUnitPrice(Double.parseDouble(line)); } else if ((line =
-		 * bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setDescription(line); } else if ((line =
-		 * bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setManufacturer(line); } else if ((line =
-		 * bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setCategory(line); } else if ((line = bufferedReader.readLine())
-		 * != null) { if (!line.equals("/"))
-		 * readProduct.setUnitsInStock(Long.parseLong(line)); } else if ((line =
-		 * bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setUnitsInOrder(Long.parseLong(line)); } else if ((line =
-		 * bufferedReader.readLine()) != null) { if (!line.equals("/"))
-		 * readProduct.setDiscontinued(Boolean.parseBoolean(line)); }
-		 */
+		// The name of the file to open.
+		String fileName = "Products.txt";
+
+		try {
+			// Assume default encoding.
+			FileWriter fileWriter = new FileWriter(fileName);
+
+			// Always wrap FileWriter in BufferedWriter.
+			BufferedWriter outFile = new BufferedWriter(fileWriter);
+
+			// Note that write() does not automatically
+			// append a newline character.
+
+			for (Product product : listOfProducts) {
+				if (!product.getProductId().isEmpty()) {
+					outFile.write(product.getProductId());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (!product.getName().isEmpty()) {
+					outFile.write(product.getName());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (product.getUnitPrice() == 0) {
+					outFile.write((int) product.getUnitPrice());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (!product.getDescription().isEmpty()) {
+					outFile.write(product.getDescription());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (!product.getManufacturer().isEmpty()) {
+					outFile.write(product.getManufacturer());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (!product.getCategory().isEmpty()) {
+					outFile.write(product.getCategory());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (product.getUnitsInStock() == 0) {
+					outFile.write((int) product.getUnitsInStock());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				if (product.getUnitsInOrder() == 0) {
+					outFile.write((int) product.getUnitsInOrder());
+				} else
+					outFile.write("/");
+				outFile.newLine();
+
+				outFile.write(product.getDiscontinued().toString());
+				outFile.newLine();
+				outFile.newLine();
+			}
+			outFile.write("Hello there,");
+
+			outFile.write(" here is some text.");
+			outFile.newLine();
+			outFile.write("We are writing");
+			outFile.write(" the text to the file.");
+
+			// Always close files.
+			outFile.close();
+		} catch (IOException ex) {
+			System.out.println("Error writing to file '" + fileName + "'");
+			// Or we could just do this:
+			// ex.printStackTrace();
+		}
 	}
 
 	public List<Product> getProductsByCategory(String category) {
