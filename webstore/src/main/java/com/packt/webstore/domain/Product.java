@@ -1,12 +1,10 @@
 package com.packt.webstore.domain;
 
-import java.math.BigDecimal;
-
 public class Product {
 
 	private String productId;
 	private String name;
-	private BigDecimal unitPrice;
+	private double unitPrice;
 	private String description;
 	private String manufacturer;
 	private String category;
@@ -18,7 +16,7 @@ public class Product {
 		super();
 }
 
-	public Product(String productId, String name, BigDecimal unitPrice) {
+	public Product(String productId, String name, double unitPrice) {
 		this.productId = productId;
 		this.name = name;
 		this.unitPrice = unitPrice;
@@ -40,11 +38,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public BigDecimal getUnitPrice() {
+	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(BigDecimal unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
