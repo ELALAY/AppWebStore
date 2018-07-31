@@ -253,4 +253,28 @@ public class InMemoryProductRepository implements ProductRepository {
 	public void addProduct(Product product) {
 		listOfProducts.add(product);
 	}
+	
+	public List<Product> getProductsByManufacturer(String manufacturer) {
+		List<Product> listByManufacturer = new ArrayList<Product>();
+		
+		for (Product product : listOfProducts) {
+			if (manufacturer.equalsIgnoreCase(product.getManufacturer())) {
+				listByManufacturer.add(product);
+			}
+		}
+		
+		return listByManufacturer;
+	}
+	
+	public Set<Product> getProductsByPrice(int low, int high) {
+		Set<Product> listByPrice = new HashSet<Product>();
+		
+		for (Product product : listOfProducts) {
+			if (product.getUnitPrice() >= low && product.getUnitPrice() <= high) {
+				listByPrice.add(product);
+			}
+		}
+		
+		return listByPrice;
+	}
 }

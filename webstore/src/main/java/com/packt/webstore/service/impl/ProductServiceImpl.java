@@ -45,6 +45,14 @@ public class ProductServiceImpl implements ProductService{
 	public void WriteProducts() throws IOException {
 		productRepository.WriteProducts();		
 	}
+	
+	public List<Product> getProductsByManufacturer(String manufacturer) {
+		return productRepository.getProductsByManufacturer(manufacturer);
+	}
+	
+	public Set<Product> getProductsByPrice(int low, int high) {
+		return productRepository.getProductsByPrice(low, high);
+	}
 }
 
 	

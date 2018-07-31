@@ -19,6 +19,10 @@ public interface ProductService {
 	
 	void addProduct(Product product);
 	
+	List<Product> getProductsByManufacturer(String manufacturer);
+	
+	Set<Product> getProductsByPrice(int low, int high);
+	
 	void ReadProducts() throws IOException;
 	
 	void WriteProducts() throws IOException;

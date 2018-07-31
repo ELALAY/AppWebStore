@@ -18,6 +18,10 @@ public interface ProductRepository {
 	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams);
 
 	void addProduct(Product product);
+	
+	List<Product> getProductsByManufacturer(String manufacturer);
+	
+	Set<Product> getProductsByPrice(int low, int high);
 
 	void ReadProducts() throws IOException;
 

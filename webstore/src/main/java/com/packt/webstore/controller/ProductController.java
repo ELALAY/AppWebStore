@@ -1,9 +1,11 @@
 package com.packt.webstore.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,6 +74,37 @@ public class ProductController {
 		productService.addProduct(newProduct);
 		//productService.WriteProducts();
 		return "redirect:/products";
+	}
+	
+	@RequestMapping("/{category}/{price}")
+	public String filterProducts(@PathVariable("category") String category, 
+								 @MatrixVariable(pathVar = "price") Map<String, List<String>> priceParams,
+								 @RequestParam("manufacturer") String manufacturer,
+								 Model model) {
+		Set<Product> filteredProducts = new HashSet<Product>();
+		
+		List<Product> productsByCategory = productService.getProductsByCategory(category);
+		List<Product> productsByManufacturer = productService.getProductsByManufacturer(manufacturer);
+		Set<Product> productsByPrice = new HashSet<Product>();
+		
+		Integer low = new Integer(priceParams.get("low").get(0));
+		Integer high= new Integer(priceParams.get("high").get(0));
+		
+		productsByPrice.addAll(productService.getProductsByPrice(low.intValue(), high.intValue()));
+		
+		for (Product categoryProduct : productsByCategory) {
+			for (Product manufacturerProduct : productsByManufacturer) {
+				for (Product priceProduct : productsByPrice) {
+					if (priceProduct.equals(manufacturerProduct) && manufacturerProduct.equals(categoryProduct)) {
+						filteredProducts.add(priceProduct);
+					}
+				}
+			}
+		}
+		
+		model.addAttribute("products", filteredProducts);
+		
+		return "products";
 	}
 
 }
