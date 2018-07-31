@@ -2,6 +2,7 @@ package com.packt.webstore.controller;
 
 import java.io.IOException;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.packt.webstore.domain.Customer;
-import com.packt.webstore.domain.Product;
+
 import com.packt.webstore.service.CustomerService;
 
 @Controller
