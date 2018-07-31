@@ -47,4 +47,8 @@ public class inMemoryCustomerRepository implements CustomerRepository{
 		return customerById;
 	}
 	
+	public void addCustomer(Customer customer) {
+		listOfCustomers.add(customer);
+	}
+	
 }
