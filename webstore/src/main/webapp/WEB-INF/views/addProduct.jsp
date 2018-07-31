@@ -21,6 +21,7 @@
 			<form:form modelAttribute="newProduct" class="form-horizontal">
 				<fieldset>
 					<legend>Add new product</legend>
+					
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="productId">Product Id</label>
 						<div class="col-lg-10">
@@ -29,14 +30,14 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-lg-2 col-lg-2" for="productId">Product Name</label>
+						<label class="control-label col-lg-2 col-lg-2" for="name">Product Name</label>
 						<div class="col-lg-10">
 							<form:input id="name" path="name" type="text" class="form:input-large" />
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-lg-2 col-lg-2" for="productId">Product Price</label>
+						<label class="control-label col-lg-2 col-lg-2" for="unitPrice">Unit Price</label>
 						<div class="col-lg-10">
 							<form:input id="unitPrice" path="unitPrice" type="int" class="form:input-large" />
 						</div>
@@ -50,23 +51,37 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="discontinued">Discontinued</label>
+						<label class="control-label col-lg-2 col-lg-2" for="manufacturer">Product Manufacturer</label>
 						<div class="col-lg-10">
-							<form:checkbox id="discontinued" path="discontinued" />
+							<form:input id="name" path="manufacturer" type="text" class="form:input-large" />
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-lg-2 col-lg-2" for="productId">Product units in stock</label>
+						<label class="control-label col-lg-2 col-lg-2" for="category">Product Category</label>
+						<div class="col-lg-10">
+							<form:input id="category" path="category" type="text" class="form:input-large" />
+						</div>
+					</div>				
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Units in stock</label>
 						<div class="col-lg-10">
 							<form:input id="unitsInStock" path="unitsInStock" type="int" class="form:input-large" />
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-lg-2 col-lg-2" for="productId">Product Category</label>
+						<label class="control-label col-lg-2 col-lg-2" for="unitsInOrder">Units in order</label>
 						<div class="col-lg-10">
-							<form:input id="category" path="category" type="text" class="form:input-large" />
+							<form:input id="unitsInStock" path="unitsInOrder" type="int" class="form:input-large" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2" for="discontinued">Product Discontinued</label>
+						<div class="col-lg-10">
+							<form:checkbox id="discontinued" path="discontinued" />
 						</div>
 					</div>
 					
