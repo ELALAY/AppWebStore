@@ -21,7 +21,7 @@
   		<version>3.1.0</version>
   		<scope>provided</scope>
   	</dependency>
-  	<!-- 
+<!-- 
   	<dependency>
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-config</artifactId>
@@ -37,7 +37,8 @@
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-web</artifactId>
   		<version>3.1.4.RELEASE</version>
-  	</dependency> -->
+  	</dependency> 
+  	-->
   	<dependency>
   		<groupId>commons-fileupload</groupId>
   		<artifactId>commons-fileupload</artifactId>
