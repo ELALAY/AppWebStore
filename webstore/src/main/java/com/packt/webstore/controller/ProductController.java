@@ -81,16 +81,15 @@ public class ProductController {
 			HttpServletRequest request) throws IOException {
 		MultipartFile productImage = newProduct.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-
+		
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
-				productImage.transferTo(
-						new File(rootDirectory + "resource\\images\\" + newProduct.getProductId() + ".png"));
+				productImage.transferTo( new File(rootDirectory + "resource\\images\\" + newProduct.getProductId() + ".png"));
 			} catch (Exception e) {
 				throw new RuntimeException("Product Image Saving Failed", e);
 			}
 		}
-
+		
 		productService.addProduct(newProduct);
 		// productService.WriteProducts();
 		return "redirect:/products";
