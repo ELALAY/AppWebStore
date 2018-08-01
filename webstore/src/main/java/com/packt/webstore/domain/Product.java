@@ -1,5 +1,7 @@
 package com.packt.webstore.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 
 	private String productId;
@@ -11,6 +13,8 @@ public class Product {
 	private int unitsInStock;
 	private int unitsInOrder;
 	private Boolean discontinued = false;
+	
+	private MultipartFile productImage;
 
 	public Product() {
 		super();
@@ -22,6 +26,14 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 
+	public void setProductImage(MultipartFile img) {
+		this.productImage = img;
+	}
+	
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+	
 	public String getProductId() {
 		return productId;
 	}
