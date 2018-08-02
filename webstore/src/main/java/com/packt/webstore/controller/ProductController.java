@@ -1,6 +1,7 @@
 package com.packt.webstore.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
@@ -13,10 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
 import org.springframework.ui.ModelMap;
->>>>>>> 0ea377c717577713e71f0f4e99c75c3df8ff4171
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
