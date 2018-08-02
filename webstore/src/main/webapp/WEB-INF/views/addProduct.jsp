@@ -96,12 +96,13 @@
 							class="form:input-large" />
 					</div>
 				</div>
-
+				
+				<!--  
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="unitsInOrder">Units
 						in order</label>
 					<div class="col-lg-10">
-						<form:input id="unitsInStock" path="unitsInOrder" type="int"
+						<form:input id="unitsInOrder" path="unitsInOrder" type="int"
 							class="form:input-large" />
 					</div>
 				</div>
@@ -112,13 +113,12 @@
 					<div class="col-lg-10">
 						<form:checkbox id="discontinued" path="discontinued" />
 					</div>
-				</div>
+				</div> -->
 
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="productImage"> 
-						<!--<spring:message code="addProdcut.form.productImage.label" />-->
-						Product Image file
-						</label>
+						<spring:message code="addProdcut.form.productImage.label" />
+					</label>
 					<div class="col-lg-10">
 						<form:input id="productImage" path="productImage" type="file"
 							class="form:input-large" />
