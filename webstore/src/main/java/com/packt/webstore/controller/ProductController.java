@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
+=======
+import org.springframework.ui.ModelMap;
+>>>>>>> 0ea377c717577713e71f0f4e99c75c3df8ff4171
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -76,7 +80,32 @@ public class ProductController {
 		model.addAttribute("newProduct", newProduct);
 		return "addProduct";
 	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, ModelMap map, BindingResult result, HttpServletRequest request) {
+		String[] suppressedFields = result.getSuppressedFields();
+		
+		if (suppressedFields.length > 0) {
+			throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+		}
+		
+		MultipartFile productImage = productToBeAdded.getProductImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+				
+			if (productImage!=null && !productImage.isEmpty()) {
+		       try {
+		      	productImage.transferTo(new File(rootDirectory+"resources\\images\\"+productToBeAdded.getProductId() + ".png"));
+		       } catch (Exception e) {
+				throw new RuntimeException("Product Image saving failed", e);
+		   }
+		   }
 
+		
+	   	productService.addProduct(productToBeAdded);
+		return "redirect:/products";
+	}
+	
+	/*
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result,
 		HttpServletRequest request) throws IOException {
@@ -88,21 +117,20 @@ public class ProductController {
 		
 		MultipartFile productImage = newProduct.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-
+		
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
-				productImage.transferTo(
-						new File(rootDirectory + "resource\\images\\" + newProduct.getProductId() + ".png"));
+				productImage.transferTo( new File(rootDirectory + "resource\\images\\" + newProduct.getProductId() + ".png"));
 			} catch (Exception e) {
 				throw new RuntimeException("Product Image Saving Failed", e);
 			}
 		}
-
+		
 		productService.addProduct(newProduct);
 		// productService.WriteProducts();
 		return "redirect:/products";
 	}
-
+	*/
 	@RequestMapping("/{category}/{price}")
 	public String filterProducts(@PathVariable("category") String category,
 			@MatrixVariable(pathVar = "price") Map<String, List<String>> priceParams,
