@@ -22,7 +22,7 @@
 				<h3>${customer.customerAddress}</h3>
 				
 				<p>
-					<strong>Item Code : </strong><span class="label label-warning">${customer.customerId}</span>
+					<strong>CutomerID.CustomerProfile.Label: </strong><span class="label label-warning">${customer.customerId}</span>
 				</p>
 				
 				<p>

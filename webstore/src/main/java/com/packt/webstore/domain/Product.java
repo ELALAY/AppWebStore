@@ -1,7 +1,12 @@
 package com.packt.webstore.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
+@XmlRootElement
 public class Product {
 
 	private String productId;
@@ -14,6 +19,7 @@ public class Product {
 	private int unitsInOrder;
 	private Boolean discontinued = false;
 	
+	@JsonIgnore
 	private MultipartFile productImage;
 
 	public Product() {
@@ -26,6 +32,7 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 
+	@XmlTransient
 	public void setProductImage(MultipartFile img) {
 		this.productImage = img;
 	}
