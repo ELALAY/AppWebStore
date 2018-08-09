@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
+import com.packt.websotre.exception.ProductNotFoundException;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
 
@@ -63,7 +64,7 @@ public class InMemoryProductRepository implements ProductRepository {
 		}
 
 		if (productById == null) {
-			throw new IllegalArgumentException("No products found with the product id: " + productId);
+			throw new ProductNotFoundException("No Product Found With The Product ID: "+productId);
 		}
 
 		return productById;
