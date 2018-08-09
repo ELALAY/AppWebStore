@@ -104,10 +104,10 @@ public class Product {
 	public void setUnitsInOrder(int unitsInOrder) {
 		this.unitsInOrder = unitsInOrder;
 	}
-
+	/*
 	public boolean isDiscontinued() {
 		return discontinued;
-	}
+	}*/
 
 	public void setDiscontinued(boolean discontinued) {
 		this.discontinued = discontinued;
