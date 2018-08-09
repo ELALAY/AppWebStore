@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.packt.websotre.exception.NoProductsFoundUnderCategoryException;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.service.ProductService;
 
@@ -55,7 +56,11 @@ public class ProductController {
 
 	@RequestMapping("/{category}")
 	public String getProductsByCategory(@PathVariable("category") String productCategory, Model model) {
-		model.addAttribute("products", productService.getProductsByCategory(productCategory));
+		List<Product> products = productService.getProductsByCategory(productCategory);
+		if (products == null || products.isEmpty()) {
+			throw new NoProductsFoundUnderCategoryException();
+		}
+		model.addAttribute("products", products);
 		return "products";
 	}
 
