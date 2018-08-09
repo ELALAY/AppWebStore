@@ -1,7 +1,8 @@
 package com.packt.webstore.controller;
 
-import java.io.IOException;
 
+import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.packt.websotre.exception.NoCustomerFoundException;
 import com.packt.webstore.domain.Customer;
 
 import com.packt.webstore.service.CustomerService;
@@ -24,7 +26,11 @@ public class CustomerController {
 
 	@RequestMapping
 	public String List_Customers(Model model) {
-		model.addAttribute("customers", customerService.getAllCustomers());
+		List<Customer> customers = customerService.getAllCustomers();
+		if (customers == null || customers.isEmpty()) {
+			throw new NoCustomerFoundException();
+		}
+		model.addAttribute("customers", customers);
 		return "customers";
 	}
 
