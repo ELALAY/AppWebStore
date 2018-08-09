@@ -14,12 +14,16 @@
 
 	<section>
 		<div class="pull-right" style="padding-right: 50px">
-			<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
+			<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>|<a href="?language=fr">French</a>
 		</div>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Products</h1> 
-				<p><spring:message code="addProduct.form.title.label" /></p>
+				<h1>
+					<spring:message code="addProduct.form.MainTitilePage.label"/>
+				</h1> 
+				<p>
+					<spring:message code="addProduct.form.title.label" />
+				</p>
 			</div>
 		</div>
 	</section>
