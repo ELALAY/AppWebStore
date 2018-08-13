@@ -1,17 +1,32 @@
 package com.packt.webstore.domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
+
 import javax.xml.bind.annotation.XmlTransient;
+
+
+import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 @XmlRootElement
 public class Product {
-
+	
+	@Pattern(regexp="P[0*9]+", message="{Pattern.Product.productID.validation}")
 	private String productId;
+	
+	@Size(min=4, max=50, message="{Size.Producr.name.validation}")
 	private String name;
+	
+	@Min(value=0, message="{Min.Product.unitPrice.validation}")
+	@Digits(integer=8, fraction=2, message="{Digits.Product.unitPrice.validation}")
+	@NotNull //(message="{NotNull.Product.unitPrice.validation}")
 	private int unitPrice;
+	
 	private String description;
 	private String manufacturer;
 	private String category;
